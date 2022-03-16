@@ -7,11 +7,13 @@ MainWindow::MainWindow(QWidget *parent)
     , pixmap{715,281}
     , x{40}
     , y{40}
+    , width{5}
+    , colour{QColor(Qt::black)}  // default colour
 {
     ui->setupUi(this);
     //https://forum.qt.io/topic/70049/how-to-do-qpainter-paint-in-the-widget/2
 
-    pixmap.fill(QColor("transparent"));
+    pixmap.fill(QColor("white"));
     PaintRight();
     connect(ui->upButton,&QPushButton::clicked,this,&MainWindow::PaintUp);
     connect(ui->leftButton,&QPushButton::clicked,this,&MainWindow::PaintLeft);
@@ -24,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::PaintUp()
 {
     QPainter painter(&pixmap);
-    painter.setPen(QPen(Qt::green,5));
+    painter.setPen(QPen(colour,width));
     painter.drawLine(x,y,x,y-20);
     ui->label->setPixmap(pixmap);
     y-=20;
@@ -34,7 +36,7 @@ void MainWindow::PaintUp()
 void MainWindow::PaintLeft()
 {
     QPainter painter(&pixmap);
-    painter.setPen(QPen(Qt::green,5));
+    painter.setPen(QPen(colour,width));
     painter.drawLine(x,y,x-20,y);
     ui->label->setPixmap(pixmap);
     x-=20;
@@ -44,7 +46,7 @@ void MainWindow::PaintLeft()
 void MainWindow::PaintDown()
 {
     QPainter painter(&pixmap);
-    painter.setPen(QPen(Qt::green,5));
+    painter.setPen(QPen(colour,width));
     painter.drawLine(x,y,x,y+20);
     ui->label->setPixmap(pixmap);
     y+=20;
@@ -55,7 +57,7 @@ void MainWindow::PaintDown()
 void MainWindow::PaintRight()
 {
     QPainter painter(&pixmap);
-    painter.setPen(QPen(Qt::green,5));
+    painter.setPen(QPen(colour,width));
     painter.drawLine(x,y,x+20,y);
     ui->label->setPixmap(pixmap);
     x+=20;

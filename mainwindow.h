@@ -26,6 +26,8 @@ public slots:
 private:
     Ui::MainWindow *ui;
     QPixmap pixmap;
-    int x, y;
+    int x, y;       // cursor coordinates
+    int width;
+    QColor colour;
 };
 #endif // MAINWINDOW_H

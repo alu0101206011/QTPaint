@@ -102,8 +102,32 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuStyle">
+    <property name="title">
+     <string>Style</string>
+    </property>
+    <addaction name="editWidth"/>
+    <addaction name="editColour"/>
+   </widget>
+   <addaction name="menuStyle"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="editWidth">
+   <property name="text">
+    <string>Width</string>
+   </property>
+  </action>
+  <action name="editColour">
+   <property name="text">
+    <string>Colour</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
