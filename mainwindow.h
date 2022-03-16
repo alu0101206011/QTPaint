@@ -23,6 +23,6 @@ public slots:
 private:
     Ui::MainWindow *ui;
     QPixmap pixmap;
-    int cursor;
+    int x, y;
 };
 #endif // MAINWINDOW_H

@@ -4,8 +4,9 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , pixmap{200,200}
-    , cursor{0}
+    , pixmap{715,281}
+    , x{40}
+    , y{40}
 {
     ui->setupUi(this);
     //https://forum.qt.io/topic/70049/how-to-do-qpainter-paint-in-the-widget/2
@@ -21,9 +22,9 @@ void MainWindow::PaintRight()
 {
     QPainter painter(&pixmap);
     painter.setPen(QPen(Qt::green,5));
-    painter.drawLine(cursor,100,cursor+20,100);
+    painter.drawLine(x,y,x+20,y);
     ui->label->setPixmap(pixmap);
-    cursor+=20;
+    x+=20;
     QPushButton *a = new QPushButton;
 }
 
