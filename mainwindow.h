@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void PaintUp();
     void PaintRight();
 
 private:
