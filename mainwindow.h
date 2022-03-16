@@ -19,6 +19,8 @@ public:
 
 public slots:
     void PaintUp();
+    void PaintLeft();
+    void PaintDown();
     void PaintRight();
 
 private:

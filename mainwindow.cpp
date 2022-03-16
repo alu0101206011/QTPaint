@@ -13,8 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     pixmap.fill(QColor("transparent"));
     PaintRight();
-    connect(ui->rightButton,&QPushButton::clicked,this,&MainWindow::PaintRight);
     connect(ui->upButton,&QPushButton::clicked,this,&MainWindow::PaintUp);
+    connect(ui->leftButton,&QPushButton::clicked,this,&MainWindow::PaintLeft);
+    connect(ui->downButton,&QPushButton::clicked,this,&MainWindow::PaintDown);
+    connect(ui->rightButton,&QPushButton::clicked,this,&MainWindow::PaintRight);
     QMenu *fileMenu = menuBar()->addMenu("File");
     fileMenu->addAction("Exit",this,&MainWindow::close);
 }
@@ -28,6 +30,27 @@ void MainWindow::PaintUp()
     y-=20;
     QPushButton *a = new QPushButton;
 }
+
+void MainWindow::PaintLeft()
+{
+    QPainter painter(&pixmap);
+    painter.setPen(QPen(Qt::green,5));
+    painter.drawLine(x,y,x-20,y);
+    ui->label->setPixmap(pixmap);
+    x-=20;
+    QPushButton *a = new QPushButton;
+}
+
+void MainWindow::PaintDown()
+{
+    QPainter painter(&pixmap);
+    painter.setPen(QPen(Qt::green,5));
+    painter.drawLine(x,y,x,y+20);
+    ui->label->setPixmap(pixmap);
+    y+=20;
+    QPushButton *a = new QPushButton;
+}
+
 
 void MainWindow::PaintRight()
 {
