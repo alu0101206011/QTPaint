@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QPixmap>
 #include <QPainter>
+#include <QInputDialog>
+#include <QColorDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,11 +25,15 @@ public slots:
     void PaintDown();
     void PaintRight();
 
+private slots:
+    void on_editWidth_triggered();
+    void on_editColour_triggered();
+
 private:
-    Ui::MainWindow *ui;
-    QPixmap pixmap;
-    int x, y;       // cursor coordinates
-    int width;
-    QColor colour;
+    Ui::MainWindow *ui_;
+    QPixmap pixmap_;
+    int x_, y_;       // cursor coordinates
+    int width_;
+    QColor colour_;
 };
 #endif // MAINWINDOW_H
