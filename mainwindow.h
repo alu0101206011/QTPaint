@@ -8,6 +8,7 @@
 #include <QColorDialog>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,8 @@ public slots:
     void PaintLeft();
     void PaintDown();
     void PaintRight();
+    void writeSettings();
+    void readSettings();
 
 private slots:
     void editWidth_triggered();

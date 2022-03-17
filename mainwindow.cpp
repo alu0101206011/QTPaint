@@ -4,16 +4,15 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui_(new Ui::MainWindow)
-    , pixmap_{715,281}
+    , pixmap_{711,291}
     , x_{40}
     , y_{40}
-    , width_{5}
-    , colour_{QColor(Qt::black)}  // default colour
 {
     ui_->setupUi(this);
     //https://forum.qt.io/topic/70049/how-to-do-qpainter-paint-in-the-widget/2
 
     pixmap_.fill(QColor("white"));
+    readSettings();
     PaintRight();
 
     // Connecting direction buttons with methods
@@ -33,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    writeSettings();
     delete ui_;
 }
 
@@ -78,12 +78,10 @@ void MainWindow::editWidth_triggered()
     width_ = QInputDialog::getInt(this, "Pen width", "Enter width:", 10, 1);
 }
 
-
 void MainWindow::editColour_triggered()
 {
     colour_ = QColorDialog::getColor(Qt::black, this, "Pen color");
 }
-
 
 void MainWindow::imageSave_triggered()
 {
@@ -93,13 +91,10 @@ void MainWindow::imageSave_triggered()
         ui_->label->grab().save(fileName);
 }
 
-
-
 void MainWindow::optionExit_triggered()
 {
     close();
 }
-
 
 void MainWindow::showHelp_triggered()
 {
@@ -107,3 +102,35 @@ void MainWindow::showHelp_triggered()
     QMessageBox::information(this,tr("Paint help"), message);
 }
 
+
+void MainWindow::writeSettings()
+{
+    QSettings settings("Moose Soft", "Clipper");
+
+    settings.beginGroup("MainWindow");
+    settings.setValue("geometry", saveGeometry());
+    settings.setValue("penColour", colour_);
+    settings.setValue("penWidth", width_);
+    settings.endGroup();
+}
+
+void MainWindow::readSettings()
+{
+    QSettings settings("Moose Soft", "Clipper");
+
+    settings.beginGroup("MainWindow");
+    const auto geometry = settings.value("geometry", QByteArray()).toByteArray();
+    if (geometry.isEmpty())
+        setGeometry(200, 200, 829, 565);
+    else
+        restoreGeometry(geometry);
+
+    if (settings.value("penWidth").isNull()) {
+        width_ = 5;
+    } else {
+        width_ = settings.value("penWidth").toInt();
+    }
+    colour_ = settings.value("penColour").value<QColor>();
+
+    settings.endGroup();
+}
