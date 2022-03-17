@@ -93,6 +93,7 @@
     </property>
    </widget>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -109,9 +110,16 @@
     <addaction name="editWidth"/>
     <addaction name="editColour"/>
    </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="imageSave"/>
+    <addaction name="optionExit"/>
+   </widget>
    <addaction name="menuStyle"/>
+   <addaction name="menuFile"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="editWidth">
    <property name="text">
     <string>Width</string>
@@ -120,6 +128,16 @@
   <action name="editColour">
    <property name="text">
     <string>Colour</string>
+   </property>
+  </action>
+  <action name="imageSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="optionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>
