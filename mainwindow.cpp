@@ -27,6 +27,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui_->editColour,SIGNAL(triggered()),this,SLOT(editColour_triggered()));
     connect(ui_->imageSave,SIGNAL(triggered()),this,SLOT(imageSave_triggered()));
     connect(ui_->optionExit,SIGNAL(triggered()),this,SLOT(optionExit_triggered()));
+    connect(ui_->showHelp,SIGNAL(triggered()),this,SLOT(showHelp_triggered()));
+
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui_;
 }
 
 void MainWindow::PaintUp()
@@ -57,7 +64,6 @@ void MainWindow::PaintDown()
 
 }
 
-
 void MainWindow::PaintRight()
 {
     QPainter painter(&pixmap_);
@@ -66,12 +72,6 @@ void MainWindow::PaintRight()
     ui_->label->setPixmap(pixmap_);
     x_+=20;
 }
-
-MainWindow::~MainWindow()
-{
-    delete ui_;
-}
-
 
 void MainWindow::editWidth_triggered()
 {
@@ -98,5 +98,12 @@ void MainWindow::imageSave_triggered()
 void MainWindow::optionExit_triggered()
 {
     close();
+}
+
+
+void MainWindow::showHelp_triggered()
+{
+    QString message = "\nPaint help.\n\n\n1. Save\nYou can save by clicking on the menu bar \"File/Save\" and then you can choose the file destination.\n\n2. Change colour\nYou can change the pen colour by clicking on the menu bar \"Style/Colour\".\n\n3. Change width\n You can change the pen width by clicking on the menu bar \"Style/Width\".\n\n4. Exit \nYou can exit this program by clicking on the menu bar \"File/Exit\".\n\n";
+    QMessageBox::information(this,tr("Paint help"), message);
 }
 

@@ -32,6 +32,7 @@ private slots:
     void editColour_triggered();
     void imageSave_triggered();
     void optionExit_triggered();
+    void showHelp_triggered();
 
 private:
     Ui::MainWindow *ui_;
