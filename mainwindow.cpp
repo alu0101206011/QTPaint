@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     , y_{40}
 {
     ui_->setupUi(this);
-    //https://forum.qt.io/topic/70049/how-to-do-qpainter-paint-in-the-widget/2
 
     pixmap_.fill(QColor("white"));
     readSettings();
@@ -94,7 +93,6 @@ void MainWindow::editColour_triggered()
 // Private method that saves an image of pixmap in the direction you choose when you press save button in the menu bar
 void MainWindow::imageSave_triggered()
 {
-    //    https://stackoverflow.com/questions/16362191/qt-grab-widget-and-save-image
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save image"), QDir::currentPath(),tr("Image Files (*.png *.jpg *.bmp);;All Files(*)"));
     if (fileName != "")
         ui_->label->grab().save(fileName);
