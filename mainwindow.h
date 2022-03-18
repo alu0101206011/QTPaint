@@ -3,12 +3,12 @@
 
 #include <QMainWindow>
 #include <QPixmap>
-#include <QPainter>
-#include <QInputDialog>
-#include <QColorDialog>
-#include <QFileDialog>
-#include <QMessageBox>
-#include <QSettings>
+#include <QPainter> 
+#include <QInputDialog> // to select width
+#include <QColorDialog> // to colour
+#include <QFileDialog>  // to save
+#include <QMessageBox>  // to help
+#include <QSettings>    // to settings
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,8 +27,6 @@ public slots:
     void PaintLeft();
     void PaintDown();
     void PaintRight();
-    void writeSettings();
-    void readSettings();
 
 private slots:
     void editWidth_triggered();
@@ -36,6 +34,8 @@ private slots:
     void imageSave_triggered();
     void optionExit_triggered();
     void showHelp_triggered();
+    void writeSettings();
+    void readSettings();
 
 private:
     Ui::MainWindow *ui_;
